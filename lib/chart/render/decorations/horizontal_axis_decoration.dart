@@ -167,7 +167,7 @@ class HorizontalAxisDecoration extends DecorationPainter {
     final scale = _height / _maxValue;
     final gridPath = Path();
 
-    for (var i = 0; i * scale * axisStep <= scale * _maxValue; i++) {
+    for (var i = 0; i * axisStep <=  _maxValue; i++) {
       final _defaultValue = (axisStep * i + state.data.minValue);
 
       final _isPositionStart = legendPosition == HorizontalLegendPosition.start;
