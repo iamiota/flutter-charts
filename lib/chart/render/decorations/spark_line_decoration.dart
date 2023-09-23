@@ -136,8 +136,10 @@ class SparkLineDecoration extends DecorationPainter {
         _positions.add(Offset(_itemWidth * key + _position, 0.0));
       }
 
-      _positions.add(Offset(_itemWidth * key + _position,
-          size.height - ((value.max ?? 0.0) - state.data.minValue) * scale));
+      if (value.max != null) {
+        _positions.add(Offset(_itemWidth * key + _position,
+            size.height - ((value.max ?? 0.0) - state.data.minValue) * scale));
+      }
 
       if (fill && state.data.items[listIndex].length - 1 == key) {
         _positions.add(Offset(_itemWidth * key + _position, 0.0));
