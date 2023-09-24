@@ -158,6 +158,7 @@ class SparkLineDecoration extends DecorationPainter {
   /// Smooth out points and return path in turn
   /// Smoothing is done with quadratic bezier
   Path _getPoints(List<Offset> points, bool fill, Size size) {
+    if (points.isEmpty) return Path();
     final _points =
         fill ? points.getRange(1, points.length - 1).toList() : points;
 
