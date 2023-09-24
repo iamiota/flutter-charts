@@ -128,7 +128,13 @@ class ChartData<T> {
   /// Max value is max data item from [items] or [ChartOptions.axisMax]
   static double _getMaxValue<T>(
       List<ChartItem<T>> items, double? valueAxisMax) {
-    return max(valueAxisMax ?? 0.0, items.map((e) => e.max ?? 0.0).reduce(max));
+    if (items.isEmpty) return 0.0;
+    final double maxValue =
+        items.where((e) => e.max != null).map((e) => e.max!).reduce(max);
+    if (valueAxisMax != null) {
+      return max(valueAxisMax, maxValue);
+    }
+    return maxValue;
   }
 
   /// Get min value of the chart
