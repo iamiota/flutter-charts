@@ -216,7 +216,7 @@ class HorizontalAxisDecoration extends DecorationPainter {
                   ? _positionEnd
                   : _positionStart,
               _height -
-                  axisStep * i * scale -
+                  axisStep * i * (scale == double.infinity ? 1 : scale) -
                   (_textPainter.height + (valuesPadding?.bottom ?? 0.0)) +
                   (valuesPadding?.top ?? 0.0)));
     }
