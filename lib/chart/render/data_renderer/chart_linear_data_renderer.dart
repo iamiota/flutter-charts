@@ -196,7 +196,7 @@ class _ChartLinearItemRenderer<T> extends ChartItemRenderer<T>
         Offset(
             itemWidth * currentValue,
             size.height -
-                ((child.item.max ?? 0.0) * _verticalMultiplier) +
+                ((child.item.max ?? chartState.data.minValue) * _verticalMultiplier) +
                 (chartState.data.minValue * _verticalMultiplier)) +
         // MultiValuePadding offset
         Offset(_multiValuePadding.left * _stack, 0);
