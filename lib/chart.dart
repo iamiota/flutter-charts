@@ -11,6 +11,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import 'chart/render/util/util.dart';
+
 /// State
 part 'chart/model/chart_state.dart';
 

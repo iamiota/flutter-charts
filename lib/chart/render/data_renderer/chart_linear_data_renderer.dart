@@ -3,7 +3,8 @@ part of charts_painter;
 /// Align chart data items in linear fashion. Meaning X axis cannot be changed. X axis becomes the index of current item
 /// height of the item is defined by item max or min value.
 class ChartLinearDataRenderer<T> extends ChartDataRenderer<T> {
-  ChartLinearDataRenderer(this.chartState, List<Widget> children, {Key? key}) : super(key: key, children: children);
+  ChartLinearDataRenderer(this.chartState, List<Widget> children, {Key? key})
+      : super(key: key, children: children);
 
   final ChartState<T?> chartState;
 
@@ -172,7 +173,7 @@ class _ChartLinearItemRenderer<T> extends ChartItemRenderer<T>
     // Get all necessary calculations for ChartItem for layout and position of the child.
 
     // Max value that is present in the chart
-    final _maxValue = chartState.data.maxValue - chartState.data.minValue;
+    final _maxValue = getRound(chartState.data.maxValue - chartState.data.minValue);
     // Get current vertical multiplayer
     final _verticalMultiplier = size.height / max(0, _maxValue);
     // In case we have multiple data and we have [WidgetItemOptions.multiValuePadding] set to true then
@@ -204,7 +205,8 @@ class _ChartLinearItemRenderer<T> extends ChartItemRenderer<T>
     // Handle stack data strategy.
     if (chartState.data.dataStrategy is StackDataStrategy) {
       if (child.listIndex + 1 < chartState.data.stackSize) {
-        bottomPaddingHeight = (chartState.data.items[child.listIndex + 1][currentValue].max ?? 0.0) * (1 - _stack);
+        bottomPaddingHeight =
+            (chartState.data.items[child.listIndex + 1][currentValue].max ?? 0.0) * (1 - _stack);
       }
     }
 
