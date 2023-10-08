@@ -109,7 +109,7 @@ class ValueDecoration extends DecorationPainter {
   @override
   void draw(Canvas canvas, Size size, ChartState state) {
     final _maxValue = state.data.maxValue - state.data.minValue;
-    final _verticalMultiplier = size.height / max(1, _maxValue);
+    final _verticalMultiplier = size.height / max(0, _maxValue);
 
     final _listSize = state.data.listSize;
     final _itemWidth = size.width / _listSize;

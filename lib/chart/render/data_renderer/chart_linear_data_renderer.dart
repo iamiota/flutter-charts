@@ -174,7 +174,7 @@ class _ChartLinearItemRenderer<T> extends ChartItemRenderer<T>
     // Max value that is present in the chart
     final _maxValue = chartState.data.maxValue - chartState.data.minValue;
     // Get current vertical multiplayer
-    final _verticalMultiplier = size.height / max(1, _maxValue);
+    final _verticalMultiplier = size.height / max(0, _maxValue);
     // In case we have multiple data and we have [WidgetItemOptions.multiValuePadding] set to true then
     // we need to add padding to the item, and change the starting offset.
     final _multiValuePadding = chartState.itemOptions.multiValuePadding;

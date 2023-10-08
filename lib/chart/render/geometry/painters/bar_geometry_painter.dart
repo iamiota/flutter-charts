@@ -33,7 +33,7 @@ class BarGeometryPainter<T> extends GeometryPainter<T> {
   @override
   void draw(Canvas canvas, Size size, Paint paint) {
     final _maxValue = data.maxValue - data.minValue;
-    final _verticalMultiplier = size.height / max(1, _maxValue);
+    final _verticalMultiplier = size.height / max(0, _maxValue);
     final _minValue = (data.minValue * _verticalMultiplier);
 
     final _radius = drawDataItem.radius ?? BorderRadius.zero;

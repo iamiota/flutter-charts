@@ -65,7 +65,7 @@ class WidgetDecoration extends DecorationPainter {
           final _itemWidth = _size.width / _listSize;
 
           final _maxValue = state.data.maxValue - state.data.minValue;
-          final _verticalMultiplier = _size.height / max(1, _maxValue);
+          final _verticalMultiplier = _size.height / max(0, _maxValue);
 
           return widgetDecorationBuilder(
               context, state, _itemWidth, _verticalMultiplier);
