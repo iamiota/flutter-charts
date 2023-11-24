@@ -165,8 +165,17 @@ class HorizontalAxisDecoration extends DecorationPainter {
     final _height = getRound((size.height) - lineWidth);
     final scale = _height / _maxValue;
     final gridPath = Path();
-
+    final List<double> steps = [];
     for (var i = 0; getRound(i * axisStep) <= _maxValue; i++) {
+      steps.add(i.toDouble());
+    }
+    if (steps.isNotEmpty) {
+       if (getRound(steps.last * axisStep) < _maxValue) {
+        steps.add(getRound(_maxValue / axisStep));
+       }
+    }
+   
+    for (final i in steps) {
       final _defaultValue = getRound(axisStep * i + state.data.minValue);
 
       final _isPositionStart = legendPosition == HorizontalLegendPosition.start;
@@ -186,7 +195,7 @@ class HorizontalAxisDecoration extends DecorationPainter {
 
       String? _text;
 
-      if (!showTopValue && i == getRound(_maxValue / axisStep)) {
+      if (!showTopValue && i >= getRound(_maxValue / axisStep)) {
         _text = null;
       } else {
         final _value = axisValue.call(_defaultValue);
